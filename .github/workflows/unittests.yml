@@ -3,6 +3,7 @@ name: Unit-Testing
 on:
   push:
     branches: [main]
+
 jobs:
   test:
     runs-on: ubuntu-lates
@@ -13,14 +14,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Node Instll
+
+      - name: Node Install
         uses: actions/setup-node@v1
         with:
           node-version ${{matrix.node-version}}
       - run: npm i
 
       - name: Run Jest Unit-Testing
-      - uses: actions/setup-node@v1
+        uses: actions/setup-node@v1
         with:
           node-version ${{matrix.node-version}}
       - run: npm run test:ci
